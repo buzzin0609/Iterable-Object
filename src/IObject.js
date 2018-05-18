@@ -8,12 +8,15 @@ export default class IObject {
 		const self = this;
 		return {
 			i: 0,
-			next: function() {
+			next: function iObjectNext() {
 				const keys = Object.keys(self);
 				const key = keys[this.i];
 
 				if (key) {
-					const value = { [key]: self[key] };
+					const value = {
+						key,
+						value: self[key]
+					};
 					this.i++;
 					return {
 						value,
@@ -26,3 +29,4 @@ export default class IObject {
 		}
 	}
 }
+

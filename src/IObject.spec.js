@@ -25,9 +25,18 @@ describe('IObject:', function () {
 
 	it('should be iterable using a for of loop', function () {
 		for (let entry of obj) {
-
+			expect(entry).toEqual({ key: 'foo', value: 'bar' });
+			break;
 		}
 
 		expect(true).toEqual(true);
+	});
+
+	it('should allow for destructuring of the key and value', function () {
+		for (let { key, value } of obj) {
+			expect(key).toEqual('foo');
+			expect(value).toEqual('bar');
+			break;
+		}
 	});
 });
