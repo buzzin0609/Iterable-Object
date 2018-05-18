@@ -1,20 +1,20 @@
-# Iterable Object
+# Object to Iterable
 
 Gives ordinary Javascript objects the super Symbol.iterator power of the future!
 
 ## Install
 
 From npm
-`npm install --save-dev i-object`
+`npm install --save-dev object-to-iterable`
 
 Or Yarn
-`yarn add i-object`
+`yarn add object-to-iterable`
 
 To start using IObject, `import` or `require` it into your project.
 
-`import IObject from 'i-object`<br/>
+`import IObject from 'object-to-iterable`<br/>
 or<br/> 
-`const IObject = require('i-object')`
+`const IObject = require('object-to-iterable')`
 
 ## Example Usage
 
