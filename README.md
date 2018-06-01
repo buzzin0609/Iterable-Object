@@ -53,3 +53,13 @@ for (let { key, value } of obj) {
 	console.log(value); // 'bar'
 }
 ```
+
+## Prototype Methods
+
+IObject.filter
+IObject.map
+
+### Todo
+
+- filter and map documentation
+- filter and map tests

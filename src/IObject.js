@@ -1,13 +1,15 @@
 
 export default class IObject {
 	constructor(obj) {
-		Object.assign(this, obj);
+		for (const n in obj) {
+			this[n] = obj[n];
+		}
 	}
 
 	filter(callback) {
 		const ret = {};
 
-		for (let { key, value } of this) {
+		for (const { key, value } of this) {
 			if (callback(key, value)) {
 				ret[key] = value;
 			}
@@ -19,7 +21,7 @@ export default class IObject {
 	map(callback) {
 		const ret = {};
 
-		for (let { key, value } of this) {
+		for (const { key, value } of this) {
 			ret[key] = callback(key, value);
 		}
 
