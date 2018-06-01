@@ -4,6 +4,28 @@ export default class IObject {
 		Object.assign(this, obj);
 	}
 
+	filter(callback) {
+		const ret = {};
+
+		for (let { key, value } of this) {
+			if (callback(key, value)) {
+				ret[key] = value;
+			}
+		}
+
+		return new IObject(ret);
+	}
+
+	map(callback) {
+		const ret = {};
+
+		for (let { key, value } of this) {
+			ret[key] = callback(key, value);
+		}
+
+		return new IObject(ret);
+	}
+
 	[Symbol.iterator]() {
 		const self = this;
 		return {
