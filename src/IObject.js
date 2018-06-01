@@ -30,10 +30,11 @@ export default class IObject {
 
 	[Symbol.iterator]() {
 		const self = this;
+		const keys = Object.keys(self);
+
 		return {
 			i: 0,
 			next: function iObjectNext() {
-				const keys = Object.keys(self);
 				const key = keys[this.i];
 
 				if (key) {
