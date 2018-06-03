@@ -1,6 +1,6 @@
 {
   "name": "object-to-iterable",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Transforms ordinary objects into iterables. You can use a for of to iterate through any object's properties",
   "main": "IObject.js",
   "scripts": {

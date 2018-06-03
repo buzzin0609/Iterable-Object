@@ -18,6 +18,14 @@ export default class IObject {
 		return new IObject(ret);
 	}
 
+	values() {
+		return Object.values(this);
+	}
+
+	keys() {
+		return Object.keys(this);
+	}
+
 	map(callback) {
 		const ret = {};
 
