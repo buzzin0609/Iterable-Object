@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es3",
+    "sourceMap": true,
+    "lib": ["ES2015", "dom"]
+  },
+  "types": ["jasmine"],
+  "exclude": [
+    "node_modules"
+  ]
+}
