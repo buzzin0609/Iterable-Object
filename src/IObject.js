@@ -7,32 +7,20 @@ var IObject = /** @class */ (function () {
         }
     }
     IObject.prototype.filter = function (callback) {
-        var ret = {};
-        for (var _i = 0, _a = this; _i < _a.length; _i++) {
-            var _b = _a[_i], key = _b.key, value = _b.value;
-            if (callback(key, value)) {
-                ret[key] = value;
-            }
-        }
-        return new IObject(ret);
+        return iObjectFilter(this)(callback);
     };
     IObject.prototype.values = function () {
-        return Object.values(this);
+        return iObjectValues(this);
     };
     IObject.prototype.keys = function () {
         return Object.keys(this);
     };
     IObject.prototype.map = function (callback) {
-        var ret = {};
-        for (var _i = 0, _a = this; _i < _a.length; _i++) {
-            var _b = _a[_i], key = _b.key, value = _b.value;
-            ret[key] = callback(key, value);
-        }
-        return new IObject(ret);
+        return iObjectMapper(this)(callback);
     };
     IObject.prototype[Symbol.iterator] = function () {
         var self = this;
-        var keys = Object.keys(self);
+        var keys = this.keys();
         return {
             i: 0,
             next: function iObjectNext() {
@@ -55,4 +43,30 @@ var IObject = /** @class */ (function () {
     return IObject;
 }());
 exports["default"] = IObject;
+function iObjectMapper(obj) {
+    return function mapper(callback) {
+        var ret = {};
+        for (var _i = 0, obj_1 = obj; _i < obj_1.length; _i++) {
+            var _a = obj_1[_i], key = _a.key, value = _a.value;
+            ret[key] = callback(key, value);
+        }
+        return new IObject(ret);
+    };
+}
+function iObjectFilter(obj) {
+    return function filterFn(callback) {
+        var ret = {};
+        for (var _i = 0, obj_2 = obj; _i < obj_2.length; _i++) {
+            var _a = obj_2[_i], key = _a.key, value = _a.value;
+            if (callback(key, value)) {
+                ret[key] = value;
+            }
+        }
+        return new IObject(ret);
+    };
+}
+function iObjectValues(obj) {
+    return Object.keys(obj)
+        .map(function (key) { return obj[key]; });
+}
 //# sourceMappingURL=IObject.js.map

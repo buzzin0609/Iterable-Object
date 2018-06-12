@@ -6,39 +6,25 @@ export default class IObject {
         }
     }
 
-    filter(callback) {
-        const ret = {};
-
-        for (const { key, value } of this) {
-            if (callback(key, value)) {
-                ret[key] = value;
-            }
-        }
-
-        return new IObject(ret);
+    filter(callback): IObject {
+        return iObjectFilter(this)(callback);
     }
 
     values() {
-        return Object.values(this);
+        return iObjectValues(this);
     }
 
     keys() {
         return Object.keys(this);
     }
 
-    map(callback) {
-        const ret = {};
-
-        for (const { key, value } of this) {
-            ret[key] = callback(key, value);
-        }
-
-        return new IObject(ret);
+    map(callback): IObject {
+        return iObjectMapper(this)(callback);
     }
 
     [Symbol.iterator]() {
         const self = this;
-        const keys = Object.keys(self);
+        const keys = this.keys();
 
         return {
             i: 0,
@@ -63,3 +49,33 @@ export default class IObject {
     }
 }
 
+function iObjectMapper(obj) {
+    return function mapper(callback) {
+        const ret = {};
+
+        for (const { key, value } of obj) {
+            ret[key] = callback(key, value);
+        }
+
+        return new IObject(ret);
+    }
+}
+
+function iObjectFilter(obj) {
+    return function filterFn(callback) {
+        const ret = {};
+
+        for (const { key, value } of obj) {
+            if (callback(key, value)) {
+                ret[key] = value;
+            }
+        }
+
+        return new IObject(ret);
+    }
+}
+
+function iObjectValues(obj) {
+    return Object.keys(obj)
+        .map(key => obj[key]);
+}
