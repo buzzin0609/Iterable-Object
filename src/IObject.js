@@ -1,5 +1,3 @@
-"use strict";
-exports.__esModule = true;
 var IObject = /** @class */ (function () {
     function IObject(obj) {
         for (var n in obj) {
@@ -42,7 +40,7 @@ var IObject = /** @class */ (function () {
     };
     return IObject;
 }());
-exports["default"] = IObject;
+export default IObject;
 function iObjectMapper(obj) {
     return function mapper(callback) {
         var ret = {};

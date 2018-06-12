@@ -1,11 +1,28 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es3",
+    "target": "es5",
+    "module": "es2015",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "sourceMap": true,
-    "lib": ["ES2015", "dom"]
+    "noEmitHelpers": true,
+    "importHelpers": true,
+    "strictNullChecks": false,
+    "lib": [
+      "ES2015",
+      "dom"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "types": [
+      "jasmine",
+      "node"
+    ]
   },
-  "types": ["jasmine"],
+  "types": [
+    "jasmine"
+  ],
   "exclude": [
     "node_modules"
   ]

@@ -1,4 +1,3 @@
-
 export default class IObject {
     constructor(obj) {
         for (const n in obj) {
@@ -43,17 +42,18 @@ export default class IObject {
                     };
                 }
 
-                return { value: undefined, done: true };
+                return {value: undefined, done: true};
             }
         }
     }
 }
 
+
 function iObjectMapper(obj) {
     return function mapper(callback) {
         const ret = {};
 
-        for (const { key, value } of obj) {
+        for (const {key, value} of obj) {
             ret[key] = callback(key, value);
         }
 
@@ -65,7 +65,7 @@ function iObjectFilter(obj) {
     return function filterFn(callback) {
         const ret = {};
 
-        for (const { key, value } of obj) {
+        for (const {key, value} of obj) {
             if (callback(key, value)) {
                 ret[key] = value;
             }

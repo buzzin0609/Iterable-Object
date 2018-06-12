@@ -1,6 +1,6 @@
 {
   "name": "object-to-iterable",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Transforms ordinary objects into iterables. You can use a for of to iterate through any object's properties",
   "main": "IObject.js",
   "scripts": {
@@ -27,6 +27,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^3.0.0",
     "mocha": "^5.1.1",
+    "tslib": "^1.9.2",
     "webpack": "^4.8.2"
   }
 }
